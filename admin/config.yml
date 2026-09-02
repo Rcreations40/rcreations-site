@@ -1,0 +1,58 @@
+backend:
+  name: git-gateway
+  branch: main
+
+# Active l'authentification via Netlify Identity + Git Gateway.
+# À activer dans Netlify : Site settings > Identity > Enable Identity,
+# puis Services > Git Gateway > Enable Git Gateway.
+
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
+
+locale: "fr"
+
+collections:
+  - name: "site"
+    label: "Logo & photo d'accueil"
+    files:
+      - name: "site"
+        label: "Réglages généraux"
+        file: "content/site.json"
+        fields:
+          - { label: "Logo (fond transparent de préférence)", name: "logo", widget: "image" }
+          - { label: "Photo d'accueil (grande image en haut du site)", name: "hero_image", widget: "image" }
+          - { label: "Description de la photo d'accueil (pour l'accessibilité)", name: "hero_image_alt", widget: "string", required: false }
+
+  - name: "gallery"
+    label: "Galerie de réalisations"
+    files:
+      - name: "gallery"
+        label: "Photos de réalisations"
+        file: "content/gallery.json"
+        fields:
+          - label: "Photos"
+            name: "items"
+            widget: "list"
+            label_singular: "Photo"
+            summary: "{{fields.caption}}"
+            fields:
+              - { label: "Photo", name: "image", widget: "image" }
+              - { label: "Légende (affichée sous la photo)", name: "caption", widget: "string" }
+              - { label: "Texte alternatif (description pour l'accessibilité)", name: "alt", widget: "string", required: false }
+
+  - name: "materiaux"
+    label: "Essences de bois"
+    files:
+      - name: "materiaux"
+        label: "Essences présentées"
+        file: "content/materiaux.json"
+        fields:
+          - label: "Essences"
+            name: "items"
+            widget: "list"
+            label_singular: "Essence"
+            summary: "{{fields.nom}}"
+            fields:
+              - { label: "Photo de l'essence", name: "image", widget: "image" }
+              - { label: "Nom de l'essence", name: "nom", widget: "string" }
+              - { label: "Description courte", name: "description", widget: "text" }

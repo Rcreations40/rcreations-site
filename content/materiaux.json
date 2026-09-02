@@ -1,0 +1,8 @@
+{
+  "items": [
+    { "image": "https://images.unsplash.com/photo-1763392199003-27cee33bae31?w=600&q=80&auto=format&fit=crop", "nom": "Hêtre massif", "description": "Grain fin et régulier, teinte claire et lumineuse. Notre essence signature." },
+    { "image": "https://images.unsplash.com/photo-1611072337226-1140ab367200?w=600&q=80&auto=format&fit=crop", "nom": "Chêne massif abouté", "description": "Robuste et noble, pour les pièces structurelles et le mobilier durable." },
+    { "image": "https://images.unsplash.com/photo-1583418007992-a8e33a92e7ad?w=600&q=80&auto=format&fit=crop", "nom": "Acacia massif huilé", "description": "Teinte chaude et veinage prononcé, pour des pièces plus affirmées." },
+    { "image": "https://images.unsplash.com/photo-1611600700192-d87eaeed4f81?w=600&q=80&auto=format&fit=crop", "nom": "Frêne massif", "description": "Clair et souple, apprécié pour les lignes courbes et contemporaines." }
+  ]
+}
