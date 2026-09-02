@@ -446,7 +446,7 @@
         </div>
       </div>
     </div>
-    <form id="contactForm">
+    <form id="contactForm" action="https://formspree.io/f/xjyvrvzk" method="POST">
       <div class="field">
         <label for="name">Nom</label>
         <input type="text" id="name" name="name" required>
@@ -460,7 +460,7 @@
         <textarea id="message" name="message" required></textarea>
       </div>
       <button type="submit" class="submit-btn">Envoyer la demande</button>
-      <p class="form-note">Ce formulaire nécessite une connexion à un service d'envoi (ex. Formspree) pour fonctionner une fois le site en ligne.</p>
+      <p class="form-note" id="formNote">Nous répondons généralement sous 48h.</p>
     </form>
   </div>
 </section>
@@ -527,10 +527,35 @@
     `).join('');
   }).catch(() => {});
 
-  // Contact form placeholder handling
-  document.getElementById('contactForm').addEventListener('submit', function(e){
+  // Envoi du formulaire de contact via Formspree (sans rechargement de page)
+  const contactForm = document.getElementById('contactForm');
+  const formNote = document.getElementById('formNote');
+  contactForm.addEventListener('submit', function(e){
     e.preventDefault();
-    alert("Formulaire à connecter à un service d'envoi d'emails (ex. Formspree) avant mise en ligne.");
+    const submitBtn = contactForm.querySelector('.submit-btn');
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Envoi en cours…';
+    formNote.style.color = '';
+
+    fetch(contactForm.action, {
+      method: 'POST',
+      body: new FormData(contactForm),
+      headers: { 'Accept': 'application/json' }
+    }).then(response => {
+      if (response.ok){
+        contactForm.reset();
+        submitBtn.textContent = 'Envoyer la demande';
+        submitBtn.disabled = false;
+        formNote.textContent = "Merci, votre message a bien été envoyé — nous vous répondons sous 48h.";
+      } else {
+        throw new Error('Erreur envoi');
+      }
+    }).catch(() => {
+      submitBtn.textContent = 'Envoyer la demande';
+      submitBtn.disabled = false;
+      formNote.textContent = "Une erreur est survenue. Vous pouvez aussi écrire directement à Rcreations@gmail.com.";
+      formNote.style.color = '#B23A3A';
+    });
   });
 </script>
 
