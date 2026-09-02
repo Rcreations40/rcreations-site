@@ -534,5 +534,19 @@
   });
 </script>
 
+<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+<script>
+  // Permet aux liens d'invitation / réinitialisation de mot de passe reçus par email
+  // d'ouvrir automatiquement la fenêtre Netlify Identity pour définir le mot de passe.
+  if (window.netlifyIdentity) {
+    window.netlifyIdentity.on("init", user => {
+      if (!user) {
+        window.netlifyIdentity.on("login", () => {
+          document.location.href = "/admin/";
+        });
+      }
+    });
+  }
+</script>
 </body>
 </html>
