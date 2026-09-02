@@ -1,12 +1,12 @@
 {
   "items": [
     {
-      "image": "https://images.unsplash.com/photo-1763392199003-27cee33bae31?w=600&q=80&auto=format&fit=crop",
+      "image": "/images/uploads/whatsapp-image-2026-09-01-at-18.15.17.jpeg",
       "nom": "Hêtre massif",
       "description": "Grain fin et régulier, teinte claire et lumineuse. Notre essence signature."
     },
     {
-      "image": "https://images.unsplash.com/photo-1611072337226-1140ab367200?w=600&q=80&auto=format&fit=crop",
+      "image": "/images/uploads/whatsapp-image-2026-09-01-at-18.15.17-3-.jpeg",
       "nom": "Chêne massif abouté",
       "description": "Robuste et noble, pour les pièces structurelles et le mobilier durable."
     },
@@ -16,7 +16,7 @@
       "description": "Teinte chaude et veinage prononcé, pour des pièces plus affirmées."
     },
     {
-      "image": "https://images.unsplash.com/photo-1611600700192-d87eaeed4f81?w=600&q=80&auto=format&fit=crop",
+      "image": "/images/uploads/whatsapp-image-2026-09-01-at-18.15.17-2-.jpeg",
       "nom": "Frêne massif",
       "description": "Clair et souple, apprécié pour les lignes courbes et contemporaines."
     }
