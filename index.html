@@ -216,9 +216,43 @@
   .gallery-grid{
     display:grid; grid-template-columns: repeat(4, 1fr); grid-auto-rows:230px; gap:14px;
   }
-  .gallery-grid figure{ overflow:hidden; border-radius:2px; position:relative; }
+  .gallery-grid figure{ overflow:hidden; border-radius:2px; position:relative; cursor:zoom-in; }
   .gallery-grid img{ width:100%; height:100%; object-fit:cover; transition:transform 0.6s ease; }
   .gallery-grid figure:hover img{ transform:scale(1.06); }
+
+  /* ---------- LIGHTBOX ---------- */
+  .lightbox{
+    position:fixed; inset:0; z-index:1000;
+    background: rgba(20,16,10,0.92);
+    display:flex; align-items:center; justify-content:center;
+    padding: 5vh 5vw;
+    opacity:0; pointer-events:none;
+    transition: opacity 0.3s ease;
+  }
+  .lightbox.open{ opacity:1; pointer-events:auto; }
+  .lightbox img{
+    max-width:100%; max-height:100%; object-fit:contain;
+    border-radius:2px;
+    box-shadow: 0 40px 90px -30px rgba(0,0,0,0.6);
+    transform: scale(0.96);
+    transition: transform 0.3s ease;
+  }
+  .lightbox.open img{ transform: scale(1); }
+  .lightbox-caption{
+    position:absolute; bottom:26px; left:0; right:0; text-align:center;
+    font-family:'IBM Plex Mono', monospace; font-size:0.78rem; letter-spacing:0.05em;
+    color:#E4DBC9;
+  }
+  .lightbox-close{
+    position:absolute; top:22px; right:26px;
+    width:42px; height:42px; border-radius:50%;
+    border:1px solid rgba(255,255,255,0.35);
+    background:transparent; color:#F4EFE4;
+    font-size:1.3rem; line-height:1; cursor:pointer;
+    display:flex; align-items:center; justify-content:center;
+    transition: background 0.3s ease;
+  }
+  .lightbox-close:hover{ background: rgba(255,255,255,0.12); }
   figcaption{
     position:absolute; bottom:0; left:0; right:0; padding: 16px 18px;
     background: linear-gradient(to top, rgba(20,16,10,0.75), transparent);
@@ -465,6 +499,12 @@
   </div>
 </section>
 
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" id="lightboxClose" aria-label="Fermer">&times;</button>
+  <img id="lightboxImg" src="" alt="">
+  <div class="lightbox-caption" id="lightboxCaption"></div>
+</div>
+
 <footer>
   <div>© <span id="year"></span> Rcréations — Agencement intérieur, sols &amp; pièces sur mesure</div>
   <div>Saint-Cricq-Villeneuve, Landes</div>
@@ -507,12 +547,37 @@
   fetch('/content/gallery.json').then(r => r.json()).then(data => {
     const grid = document.getElementById('galleryGrid');
     if (!grid || !data.items) return;
-    grid.innerHTML = data.items.map(item => `
-      <figure>
+    grid.innerHTML = data.items.map((item, i) => `
+      <figure data-index="${i}">
         <img src="${item.image}" alt="${item.alt || item.caption || ''}" loading="lazy">
         <figcaption>${item.caption || ''}</figcaption>
       </figure>
     `).join('');
+
+    // Lightbox : clic sur une photo pour l'agrandir en plein écran
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
+    const lightboxCaption = document.getElementById('lightboxCaption');
+    const lightboxClose = document.getElementById('lightboxClose');
+
+    function openLightbox(item){
+      lightboxImg.src = item.image;
+      lightboxImg.alt = item.alt || item.caption || '';
+      lightboxCaption.textContent = item.caption || '';
+      lightbox.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeLightbox(){
+      lightbox.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    grid.querySelectorAll('figure').forEach(fig => {
+      fig.addEventListener('click', () => openLightbox(data.items[fig.dataset.index]));
+    });
+    lightboxClose.addEventListener('click', closeLightbox);
+    lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLightbox(); });
   }).catch(() => {});
 
   fetch('/content/materiaux.json').then(r => r.json()).then(data => {
