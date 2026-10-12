@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Rcréations — Menuisier & Agencement intérieur sur mesure dans les Landes (40)</title>
-<meta name="description" content="Rcréations, artisan menuisier dans les Landes : agencement intérieur, cuisines, dressings, sols et pièces sur mesure en bois massif (hêtre, chêne, acacia, frêne). Basé à Saint-Cricq-Villeneuve, interventions dans tout le secteur.">
+<title>Rcréations — Menuisier, agencement intérieur & meubles sur mesure | Mont-de-Marsan, Landes</title>
+<meta name="description" content="Rcréations, artisan menuisier autour de Mont-de-Marsan (Landes) : agencement intérieur, cuisines, dressings, sols et meubles sur mesure en bois massif.">
 <link rel="canonical" href="https://rcreation-s.netlify.app/">
 
 <!-- Icônes (onglet navigateur, écran d'accueil iOS/Safari) -->
@@ -14,8 +14,8 @@
 <!-- Partage sur les réseaux et aperçus de lien (Facebook, WhatsApp, iMessage, Safari...) -->
 <meta property="og:type" content="website">
 <meta property="og:locale" content="fr_FR">
-<meta property="og:title" content="Rcréations — Menuisier & Agencement intérieur sur mesure dans les Landes">
-<meta property="og:description" content="Artisan menuisier : cuisines, dressings, sols et pièces sur mesure en bois massif — hêtre, chêne, acacia, frêne. Saint-Cricq-Villeneuve, Landes.">
+<meta property="og:title" content="Rcréations — Menuisier, agencement intérieur & meubles sur mesure | Mont-de-Marsan">
+<meta property="og:description" content="Artisan menuisier autour de Mont-de-Marsan : cuisines, dressings, sols et meubles sur mesure en bois massif — hêtre, chêne, acacia, frêne.">
 <meta property="og:image" content="https://rcreation-s.netlify.app/images/site/hero.jpg">
 <meta property="og:url" content="https://rcreation-s.netlify.app/">
 <meta name="twitter:card" content="summary_large_image">
@@ -26,7 +26,7 @@
   "@context": "https://schema.org",
   "@type": "HomeAndConstructionBusiness",
   "name": "Rcréations",
-  "description": "Artisan menuisier proposant agencement intérieur, cuisines, dressings, sols et pièces sur mesure en bois massif — hêtre, chêne, acacia, frêne — dans les Landes.",
+  "description": "Artisan menuisier proposant agencement intérieur, cuisines, dressings, sols et pièces sur mesure en bois massif — hêtre, chêne, acacia, frêne — à Mont-de-Marsan et dans les Landes.",
   "url": "https://rcreation-s.netlify.app/",
   "email": "quentin.rcreations@gmail.com",
   "address": {
@@ -35,7 +35,11 @@
     "postalCode": "40190",
     "addressCountry": "FR"
   },
-  "areaServed": "Landes"
+  "areaServed": [
+    { "@type": "City", "name": "Mont-de-Marsan" },
+    { "@type": "City", "name": "Saint-Cricq-Villeneuve" },
+    { "@type": "AdministrativeArea", "name": "Landes" }
+  ]
 }
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -344,15 +348,32 @@
   .form-note{ font-size:0.78rem; color:var(--ink-soft); margin-top:14px; }
 
   .insta-follow{
-    margin-top:20px; display:flex; align-items:center; gap:10px;
+    margin-top:24px; display:flex; align-items:center; gap:16px;
     opacity:0.75; transition: opacity 0.3s ease;
   }
   .insta-follow:hover{ opacity:1; }
-  .insta-follow img{ width:34px; height:34px; border-radius:6px; }
+  .insta-follow img{ width:104px; height:104px; border-radius:6px; }
   .insta-follow span{
     font-family:'IBM Plex Mono', monospace; font-size:0.7rem; letter-spacing:0.04em;
     color: var(--ink-soft);
   }
+
+
+  /* ---------- ZONE & FAQ ---------- */
+  .zone{ padding: 110px 6vw; }
+  .zone-grid{ display:grid; grid-template-columns: 0.9fr 1.1fr; gap:6vw; align-items:start; }
+  .zone h2{ font-size: clamp(1.7rem, 2.8vw, 2.3rem); margin-top:14px; }
+  .zone .zone-text{ margin-top:18px; color:var(--ink-soft); max-width:42ch; }
+  .faq details{ border-top:1px solid var(--line); padding: 20px 0; }
+  .faq details:last-child{ border-bottom:1px solid var(--line); }
+  .faq summary{
+    cursor:pointer; list-style:none; font-family:'Fraunces', serif; font-size:1.1rem; font-weight:500;
+    display:flex; justify-content:space-between; gap:20px; align-items:center;
+  }
+  .faq summary::-webkit-details-marker{ display:none; }
+  .faq summary::after{ content:'+'; font-family:'IBM Plex Mono', monospace; color:var(--wood-dark); font-size:1.2rem; }
+  .faq details[open] summary::after{ content:'−'; }
+  .faq details p{ margin-top:12px; color:var(--ink-soft); font-size:0.95rem; max-width:60ch; }
 
   /* ---------- FOOTER ---------- */
   footer{
@@ -380,6 +401,8 @@
     .wood-item:nth-child(2){ border-right:none; }
     .gallery-grid{ grid-template-columns: repeat(2,1fr); grid-auto-rows:180px; }
     .contact-grid{ grid-template-columns:1fr; }
+    .zone-grid{ grid-template-columns:1fr; gap:40px; }
+    .zone{ padding: 80px 6vw; }
     form{ padding:28px; }
   }
 </style>
@@ -405,7 +428,7 @@
     <div>
       <div class="hero-eyebrow"><span class="rule"></span><span class="eyebrow">Agencement intérieur, sols &amp; pièces sur mesure</span></div>
       <h1>Le bois, <em>façonné</em><br>avec précision.</h1>
-      <p class="lede">Rcréations, menuisier dans les Landes, conçoit et fabrique des agencements intérieurs, sols et pièces sur mesure, dans un esprit épuré où chaque veine du bois est mise en valeur.</p>
+      <p class="lede">Rcréations, menuisier dans les Landes, autour de Mont-de-Marsan, conçoit et fabrique des agencements intérieurs, sols et pièces sur mesure, dans un esprit épuré où chaque veine du bois est mise en valeur.</p>
       <div class="hero-actions">
         <a href="#contact" class="btn-primary">Demander un devis</a>
         <a href="#savoir-faire" class="btn-ghost">Découvrir le savoir-faire</a>
@@ -453,7 +476,7 @@
   <div class="section-head">
     <span class="eyebrow">Prestations</span>
     <h2>Agencement intérieur, sols &amp; pièces sur mesure</h2>
-    <p>Un savoir-faire complet, des aménagements intérieurs aux finitions les plus détaillées.</p>
+    <p>Un savoir-faire complet, des aménagements intérieurs aux finitions les plus détaillées, à Mont-de-Marsan et dans les environs.</p>
   </div>
   <div class="services-grid">
     <div class="service-card">
@@ -468,7 +491,7 @@
     </div>
     <div class="service-card">
       <span class="tag">Sur mesure</span>
-      <h3>Mobilier sur mesure</h3>
+      <h3>Meubles sur mesure</h3>
       <p>Tables, bancs et pièces uniques façonnées pour épouser exactement vos volumes et votre style.</p>
     </div>
   </div>
@@ -498,6 +521,39 @@
 <section class="testimonial reveal">
   <blockquote>« Un travail minutieux, un bois magnifique et une pose impeccable. Exactement ce qu'on imaginait pour la maison. »</blockquote>
   <cite>— Un client Rcréations</cite>
+</section>
+
+<!-- ============ ZONE & FAQ ============ -->
+<section id="zone" class="zone reveal">
+  <div class="zone-grid">
+    <div>
+      <span class="eyebrow">Zone d'intervention</span>
+      <h2>Mont-de-Marsan et alentours</h2>
+      <p class="zone-text">Basé à Saint-Cricq-Villeneuve, Rcréations intervient à Mont-de-Marsan et dans les environs pour vos projets d'agencement intérieur, de meubles sur mesure, de cuisines, de dressings et de pose de sols.</p>
+    </div>
+    <div class="faq">
+      <details>
+        <summary>Réalisez-vous des meubles sur mesure à Mont-de-Marsan ?</summary>
+        <p>Oui. Nous fabriquons des meubles sur mesure en bois massif (tables, buffets, meubles TV, rangements) pour les particuliers de Mont-de-Marsan et des environs.</p>
+      </details>
+      <details>
+        <summary>Quels travaux d'agencement intérieur proposez-vous ?</summary>
+        <p>Cuisines, dressings, bibliothèques et rangements sur mesure, ainsi que le remplacement et la pose de sols.</p>
+      </details>
+      <details>
+        <summary>Quels bois utilisez-vous ?</summary>
+        <p>Principalement du hêtre, mais aussi du chêne, de l'acacia et du frêne, selon l'usage et le style recherché.</p>
+      </details>
+      <details>
+        <summary>Peut-on personnaliser un objet avec une gravure ?</summary>
+        <p>Oui, nous gravons des logos, motifs ou messages sur bois : planches à découper, plateaux, tableaux, idéal pour offrir.</p>
+      </details>
+      <details>
+        <summary>Comment demander un devis ?</summary>
+        <p>Remplissez le formulaire de contact ci-dessous en décrivant votre projet, ou écrivez-nous directement par email. Nous répondons généralement sous 48h.</p>
+      </details>
+    </div>
+  </div>
 </section>
 
 <!-- ============ CONTACT ============ -->
@@ -548,7 +604,7 @@
 
 <footer>
   <div>© <span id="year"></span> Rcréations — Agencement intérieur, sols &amp; pièces sur mesure</div>
-  <div>Saint-Cricq-Villeneuve, Landes</div>
+  <div>Saint-Cricq-Villeneuve · Mont-de-Marsan et alentours (Landes)</div>
 </footer>
 
 <script>
