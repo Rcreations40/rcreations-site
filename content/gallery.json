@@ -1,12 +1,44 @@
 {
   "items": [
-    { "image": "/images/gallery/cuisine.jpg", "caption": "Cuisine sur mesure", "alt": "Cuisine sur mesure en bois" },
-    { "image": "/images/gallery/buffet.jpg", "caption": "Buffet coulissant sur mesure", "alt": "Buffet coulissant en bois clair" },
-    { "image": "/images/gallery/meuble-poubelles.jpg", "caption": "Meuble cache-poubelles & gravures", "alt": "Meuble cache-poubelles en bois avec gravures" },
-    { "image": "/images/gallery/plateau-repas.jpg", "caption": "Plateau repas gravé", "alt": "Plateau repas gravé sur mesure" },
-    { "image": "/images/gallery/planche-cochon.jpg", "caption": "Planche à découper personnalisée", "alt": "Planche à découper personnalisée avec gravure de cochon" },
-    { "image": "/images/gallery/planche-vin.jpg", "caption": "Planche à découper personnalisée", "alt": "Planche à découper personnalisée avec gravure vin et fromage" },
-    { "image": "/images/gallery/tableau-arum.jpg", "caption": "Tableau gravé sur bois", "alt": "Tableau gravé sur bois motif Arum" },
-    { "image": "/images/gallery/tableau-whisky.jpg", "caption": "Tableau gravé sur bois", "alt": "Tableau gravé sur bois motif whisky" }
+    {
+      "image": "/images/gallery/cuisine.jpg",
+      "caption": "Cuisine sur mesure",
+      "alt": "Cuisine aménagée sur mesure avec façades en bois foncé et plan de travail noir"
+    },
+    {
+      "image": "/images/gallery/buffet.jpg",
+      "caption": "Buffet coulissant sur mesure",
+      "alt": "Buffet bas en bois massif clair à portes coulissantes"
+    },
+    {
+      "image": "/images/gallery/meuble-poubelles.jpg",
+      "caption": "Meuble cache-poubelles & gravures",
+      "alt": "Meuble cache-poubelles en bois avec gravures"
+    },
+    {
+      "image": "/images/gallery/plateau-repas.jpg",
+      "caption": "Plateau repas gravé",
+      "alt": "Plateau repas en bois avec gravure de voiture"
+    },
+    {
+      "image": "/images/gallery/planche-cochon.jpg",
+      "caption": "Planche à découper personnalisée",
+      "alt": "Planche à découper en hêtre gravée d'un cochon en béret tenant un saucisson, une baguette et une bouteille"
+    },
+    {
+      "image": "/images/gallery/planche-vin.jpg",
+      "caption": "Planche à découper personnalisée",
+      "alt": "Planche à découper en hêtre gravée d'un verre de vin, de raisins et de fromages"
+    },
+    {
+      "image": "/images/gallery/tableau-arum.jpg",
+      "caption": "Tableau gravé sur bois",
+      "alt": "Tableau en bois gravé d'un bouquet d'arums"
+    },
+    {
+      "image": "/images/gallery/tableau-whisky.jpg",
+      "caption": "Tableau gravé sur bois",
+      "alt": "Tableau en bois gravé d'une main tenant un verre de whisky"
+    }
   ]
 }
