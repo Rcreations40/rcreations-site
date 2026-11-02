@@ -1,0 +1,4 @@
+# Redirige l ancienne adresse Netlify vers le domaine principal
+https://rcreation-s.netlify.app/*  https://rcreations.fr/:splat  301!
+http://rcreation-s.netlify.app/*   https://rcreations.fr/:splat  301!
+https://www.rcreations.fr/*  https://rcreations.fr/:splat  301!
