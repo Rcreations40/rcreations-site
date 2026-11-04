@@ -56,3 +56,21 @@ collections:
               - { label: "Photo de l'essence", name: "image", widget: "image" }
               - { label: "Nom de l'essence", name: "nom", widget: "string" }
               - { label: "Description courte", name: "description", widget: "text" }
+
+  - name: "avis"
+    label: "Avis Google"
+    files:
+      - name: "avis"
+        label: "Avis affichés sur le site"
+        file: "content/avis.json"
+        fields:
+          - { label: "Lien « Laisser un avis » (depuis Google Business Profile > Obtenir plus d'avis)", name: "lien_avis", widget: "string", required: false }
+          - label: "Avis"
+            name: "items"
+            widget: "list"
+            label_singular: "Avis"
+            summary: "{{fields.auteur}}"
+            fields:
+              - { label: "Prénom et initiale (ex. Marie D.)", name: "auteur", widget: "string" }
+              - { label: "Texte de l'avis", name: "texte", widget: "text" }
+              - { label: "Nombre d'étoiles (1 à 5)", name: "etoiles", widget: "number", min: 1, max: 5, default: 5 }
