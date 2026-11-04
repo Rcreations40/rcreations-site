@@ -1,0 +1,15 @@
+{
+  "lien_avis": "",
+  "items": [
+    {
+      "auteur": "Christophe R.",
+      "texte": "Bon travail, à recommander. Prix raisonnable.",
+      "etoiles": 5
+    },
+    {
+      "auteur": "Isabelle S.",
+      "texte": "Des créations sur mesure magnifiquement réalisées, de très bonne qualité. Je recommande.",
+      "etoiles": 5
+    }
+  ]
+}
