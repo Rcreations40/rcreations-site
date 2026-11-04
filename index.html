@@ -300,19 +300,31 @@
     margin-top:26px; font-size:0.82rem; color:#9c9284; font-family:'IBM Plex Mono', monospace;
   }
 
-  /* ---------- TEMOIGNAGE ---------- */
-  .testimonial{
-    padding: 130px 6vw; text-align:center;
+  /* ---------- AVIS GOOGLE ---------- */
+  .avis{ padding: 110px 6vw; }
+  .avis-grid{
+    display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:28px; max-width:900px; margin:0 auto;
   }
-  .testimonial blockquote{
-    font-family:'Fraunces', serif; font-style:italic; font-weight:400;
-    font-size: clamp(1.5rem, 2.6vw, 2.2rem); max-width:820px; margin:0 auto;
-    line-height:1.5;
+  .avis-card{
+    background:var(--panel); border:1px solid var(--line); border-radius:4px;
+    padding:30px 28px; display:flex; flex-direction:column;
   }
-  .testimonial cite{
-    display:block; margin-top:30px; font-style:normal;
-    font-family:'IBM Plex Mono', monospace; font-size:0.78rem; letter-spacing:0.05em; color:var(--ink-soft);
+  .avis-stars{ color:#C9962B; letter-spacing:3px; font-size:1.05rem; margin:0 0 14px; }
+  .avis-card blockquote{
+    margin:0; flex:1; font-family:'Fraunces', serif; font-style:italic; font-weight:400;
+    font-size:1.15rem; line-height:1.6;
   }
+  .avis-card cite{
+    display:block; margin-top:22px; font-style:normal;
+    font-family:'IBM Plex Mono', monospace; font-size:0.78rem; letter-spacing:0.04em; color:var(--ink-soft);
+  }
+  .avis-cta{ text-align:center; margin-top:38px; }
+  .avis-cta a{
+    display:inline-block; padding:13px 26px; border:1px solid var(--ink); color:var(--ink);
+    text-decoration:none; font-weight:600; font-size:0.95rem; border-radius:2px;
+  }
+  .avis-cta a:hover{ background:var(--ink); color:var(--cream); }
 
   /* ---------- CONTACT ---------- */
   .contact{ background: var(--bg-soft); }
@@ -518,10 +530,26 @@
   <div class="gallery-grid" id="galleryGrid"></div>
 </section>
 
-<!-- ============ TEMOIGNAGE ============ -->
-<section class="testimonial reveal">
-  <blockquote>« Un travail minutieux, un bois magnifique et une pose impeccable. Exactement ce qu'on imaginait pour la maison. »</blockquote>
-  <cite>— Un client Rcréations</cite>
+<!-- ============ AVIS GOOGLE ============ -->
+<section id="avis" class="avis reveal">
+  <div class="section-head">
+    <span class="eyebrow">Avis</span>
+    <h2>Ce qu'on dit de mon travail</h2>
+    <p>Avis publiés sur ma fiche Google.</p>
+  </div>
+  <div class="avis-grid" id="avisGrid">
+    <figure class="avis-card" style="margin:0">
+      <div class="avis-stars" role="img" aria-label="5 étoiles sur 5">★★★★★</div>
+      <blockquote>Bon travail, à recommander. Prix raisonnable.</blockquote>
+      <cite>Christophe R. · Avis Google</cite>
+    </figure>
+    <figure class="avis-card" style="margin:0">
+      <div class="avis-stars" role="img" aria-label="5 étoiles sur 5">★★★★★</div>
+      <blockquote>Des créations sur mesure magnifiquement réalisées, de très bonne qualité. Je recommande.</blockquote>
+      <cite>Isabelle S. · Avis Google</cite>
+    </figure>
+  </div>
+  <div class="avis-cta" id="avisCta" hidden></div>
 </section>
 
 <!-- ============ ZONE & FAQ ============ -->
@@ -688,6 +716,27 @@
         <p>${item.description || ''}</p>
       </div>
     `).join('');
+  }).catch(() => {});
+
+  fetch('/content/avis.json').then(r => r.json()).then(data => {
+    const grid = document.getElementById('avisGrid');
+    if (grid && data.items && data.items.length) {
+      const esc = t => String(t || '').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+      grid.innerHTML = data.items.map(a => {
+        const n = Math.max(1, Math.min(5, parseInt(a.etoiles || 5, 10)));
+        return `
+      <figure class="avis-card" style="margin:0">
+        <div class="avis-stars" role="img" aria-label="${n} étoiles sur 5">${'★'.repeat(n)}${'☆'.repeat(5 - n)}</div>
+        <blockquote>${esc(a.texte)}</blockquote>
+        <cite>${esc(a.auteur)} · Avis Google</cite>
+      </figure>`;
+      }).join('');
+    }
+    const cta = document.getElementById('avisCta');
+    if (cta && data.lien_avis && /^https:\/\//.test(data.lien_avis)) {
+      cta.innerHTML = '<a href="' + data.lien_avis.replace(/"/g, '&quot;') + '" target="_blank" rel="noopener">Laisser un avis sur Google</a>';
+      cta.hidden = false;
+    }
   }).catch(() => {});
 
   // Envoi du formulaire de contact via Formspree (sans rechargement de page)
