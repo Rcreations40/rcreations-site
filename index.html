@@ -812,7 +812,7 @@
 
 <script>
 (function(){
-  var GTM_ID='GTM-5NV8WHKR', KEY='rc_consent', DAYS=180;
+  var GA_ID='G-MHX47L1864', KEY='rc_consent', DAYS=180;
   window.dataLayer=window.dataLayer||[];
   function gtag(){dataLayer.push(arguments);}
   // Par défaut : rien n'est autorisé
@@ -827,12 +827,13 @@
     return null;
   }
   function save(c){ try{ localStorage.setItem(KEY,JSON.stringify({c:c,t:Date.now()})); }catch(e){} }
-  function loadGTM(){
+  function loadGA(){
     if(loaded) return; loaded=true;
-    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});
-      var f=d.getElementsByTagName(s)[0],j=d.createElement(s);j.async=true;
-      j.src='https://www.googletagmanager.com/gtm.js?id='+i;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer',GTM_ID);
+    var j=document.createElement('script'); j.async=true;
+    j.src='https://www.googletagmanager.com/gtag/js?id='+GA_ID;
+    document.head.appendChild(j);
+    gtag('js',new Date());
+    gtag('config',GA_ID,{anonymize_ip:true});
   }
   function clearGA(){
     document.cookie.split(';').forEach(function(c){
@@ -847,7 +848,7 @@
   function grant(){
     save('granted');
     gtag('consent','update',{analytics_storage:'granted'});
-    loadGTM(); banner.hidden=true;
+    loadGA(); banner.hidden=true;
   }
   function refuse(){
     var was=read(); save('denied');
@@ -860,7 +861,7 @@
   document.getElementById('cookieSettings').addEventListener('click',function(){ banner.hidden=false; document.getElementById('cookieRefuse').focus(); });
 
   var c=read();
-  if(c==='granted'){ gtag('consent','update',{analytics_storage:'granted'}); loadGTM(); }
+  if(c==='granted'){ gtag('consent','update',{analytics_storage:'granted'}); loadGA(); }
   else if(c===null){ banner.hidden=false; }
 })();
 </script>
