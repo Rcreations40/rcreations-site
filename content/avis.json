@@ -10,6 +10,16 @@
       "auteur": "Isabelle S.",
       "texte": "Des créations sur mesure magnifiquement réalisées, de très bonne qualité. Je recommande.",
       "etoiles": 5
+    },
+    {
+      "etoiles": 4,
+      "auteur": "Marine.R",
+      "texte": "Bonne entreprise , petit jeune qui en veut et qui bosse bien."
+    },
+    {
+      "etoiles": 5,
+      "auteur": "Nicole.H",
+      "texte": "Travail tres minutieux et très belles finitions."
     }
   ]
 }
