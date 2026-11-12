@@ -9,3 +9,6 @@ https://www.rcreations.fr/*  https://rcreations.fr/:splat  301!
 /contactez-nous   /#contact          301
 /mentions         /mentions-legales  301
 /mentions-legales.html  /mentions-legales  301
+/nous-contacter   /#contact          301
+/fr/contact       /#contact          301
+/a-propos         /#savoir-faire     301
